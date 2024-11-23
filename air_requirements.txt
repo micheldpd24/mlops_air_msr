@@ -1,0 +1,9 @@
+scikit-learn
+pandas
+ensure
+dagshub
+mlflow
+spotipy
+python-dotenv
+python-box
+tinydb
