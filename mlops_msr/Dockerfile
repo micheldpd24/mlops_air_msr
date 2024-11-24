@@ -32,7 +32,7 @@ COPY models_best models_best
 COPY shell_scripts_dk scripts
 COPY src src
 COPY users users
-COPY .env custom_logger.py dvc.yaml dvc.lock ./
+# COPY .env custom_logger.py dvc.yaml dvc.lock ./
 # COPY main.py ./
 COPY __init__.py ./
 
