@@ -1,0 +1,16 @@
+{% extends "welcome.html" %}
+{% block results %}
+<div class='playlist'>
+    <h5 style='color: #ececec'>Playlist Name: {{playlist_name}}</h5>
+    <h5 style='color: #ececec'>Playlist Music Genre: {{playlist_genre}}</h5>
+    <h5 style='color: #ececec'>Similarity score of recommendations: {{score}}</h5>
+</div>
+<div class='results'>
+    <h3 style='color: #ececec'>Recommended songs</h3>
+    {% for song in songs %}
+    <p class='song' style="font-size: 11pt"> <a href={{song.split(",")[-1]}} target="_blank"> {{",
+            ".join(song.split(",")[:2])}}
+        </a> </p>
+    {% endfor %}
+</div>
+{% endblock %}
