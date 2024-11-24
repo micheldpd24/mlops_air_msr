@@ -33,10 +33,10 @@ COPY shell_scripts_dk scripts
 COPY src src
 COPY users users
 COPY users users
-COPY main.py custom_logger.py ./
-# COPY .env custom_logger.py dvc.yaml dvc.lock ./
-# COPY main.py ./
+COPY custom_logger.py ./
+COPY main.py ./
 COPY __init__.py ./
+# COPY .env custom_logger.py dvc.yaml dvc.lock ./
 
 # Ensure the scripts are executable
 RUN chmod +x scripts/*.sh
