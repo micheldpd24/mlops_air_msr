@@ -1,0 +1,15 @@
+COLUMNS:
+  uri: str
+  genre: str
+  key: float64
+  acousticness: float64
+  danceability: float64
+  energy: float64
+  instrumentalness: float64
+  loudness: float64
+  speechiness: float64
+  valence: float64
+  tempo: float64
+
+TARGET_COLUMN:
+  name: genre
