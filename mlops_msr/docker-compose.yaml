@@ -1,0 +1,28 @@
+version: '3.9'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: test-rec
+    ports:
+      - "5000:5000"   # Expose port 5000 for the Flask app
+    volumes:
+      - ./data:/appli/data  # Mount the host's 'data' directory to the container's '/appli/data'
+      - ./logs:/appli/logs   # Mount the host's 'logs' directory to the container's '/appli/logs'
+      - ./users:/appli/users   # Mount the host's 'users' directory to the container's '/appli/users'
+    environment:
+      FLASK_ENV: development  # Example environment variable (you can adjust this based on your app)
+      # MLFLOW_TRACKING_URI: https://dagshub.com/micheldpd24/mlflow_tracking.mlflow
+      # MLFLOW_TRACKING_USERNAME: micheldpd24
+      # MLFLOW_TRACKING_PASSWORD: f19e5be9a7551a5779324d989a3e80bd393c6b63
+    env_file:
+      - app_env.env
+    networks:
+      - app_network
+    restart: unless-stopped  # Automatically restart the container if it fails
+
+networks:
+  app_network:
+    driver: bridge
