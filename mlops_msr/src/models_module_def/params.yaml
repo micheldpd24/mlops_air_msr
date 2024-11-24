@@ -1,0 +1,18 @@
+GaussianMixture:
+  covariance_type: spherical
+  n_components:
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  - 3
+  random_state: 42
+GradientBoostingClassifier:
+  learning_rate: 0.008
+  max_depth: 5
+  n_estimators: 250
