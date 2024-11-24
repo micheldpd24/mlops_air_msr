@@ -1,5 +1,15 @@
-# Project : 
-Defining and implementing MLOPS CI/CD pipeline for a music recommendation system with Spotify music playlists. The methodology implemented is inspired from the datascientest mlops wine student contest [add link].
+# Project Overview
+Design and Implementation of an MLOps CI/CD Pipeline for a Music Recommendation System
+Developed a continuous integration and continuous deployment (CI/CD) pipeline for a music recommendation system leveraging Spotify music playlists. The pipeline's design is based on the methodology from the Datascientest MLOps wine quality competition project [add link].
+
+Pipeline Orchestration with Apache Airflow
+Configured and managed the orchestration of the pipeline using Apache Airflow, enabling automated, scalable, and efficient workflows.
+
+Experiment Monitoring with MLflow and Dagshub
+Integrated MLflow for tracking machine learning experiments, model parameters, and performance metrics. With MLflow server setup in DagsHub.
+
+Containerization with Docker
+Dockerized both the recommendation application and the pipeline orchestration, ensuring portability, scalability, and consistency across environments.
 
 # Setting up an MLOps project step by step 🚀
 
