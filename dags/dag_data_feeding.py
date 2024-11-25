@@ -103,9 +103,9 @@ def update_songs_base():
     # logger.info(f"delta: {delta * 100: .2f}")
     
     # Step 6: If new songs are added, perform archiving and update the raw songs base
-    if delta > 0:
-        print("Delta > 0. Songs data increase")
-        # logger.info("Delta > 0. Songs data increase")
+    if delta > 1:
+        print("Delta > 1. Songs data increase")
+        # logger.info("Delta > 1. Songs data increase")
         
         # Archive the old data
         archive_path_old = archive_old_file("data/raw/song_df.csv", "data/raw")
@@ -125,7 +125,7 @@ def update_songs_base():
         # logger.info("No changes in songs base.")
     
     # implicit push to xcom 
-    return 1 if delta > 0 else 0
+    return 1 if delta > 1 else 0
 
 
 # check if there are new songs in the songs collected from Spotify
