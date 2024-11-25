@@ -41,7 +41,7 @@ COPY __init__.py ./
 # Ensure the scripts are executable
 RUN chmod +x scripts/*.sh
 
-# Expose port 5006 for the Flask application
+# Expose port 5000 for the Flask application
 EXPOSE 5000
 
 # Run the recommendation app
