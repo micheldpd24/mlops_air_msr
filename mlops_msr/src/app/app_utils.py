@@ -26,8 +26,12 @@ load_dotenv()
 
 
 # keys to connect to Spotify API
-client_id = os.getenv("CLIENT_ID")
-client_secret = os.getenv("CLIENT_SECRET")
+#client_id = os.getenv("CLIENT_ID")
+#client_secret = os.getenv("CLIENT_SECRET")
+
+client_id="7a79bb637d21401eba41404f7319f100"
+client_secret="cd4e1a76a72842559dadcfe6ca534c0d"
+
 
 # Call an instance of Spotipy API
 auth_manager = SpotifyClientCredentials(
@@ -41,7 +45,7 @@ SIZE = os.getenv("SIZE")
 
 # playlists summaries of playlists from extract from million playlists dataset
 JSON_FILE_PATH = "data/raw/playlists.json"
-SUMMARY_FILE_PATH = Path("data/processed/playlist_df.csv")
+SUMMARY_FILE_PATH = Path("mlops_msr\data\processed\playlist_df.csv")
 PLAYLIST_DF = pd.read_csv(SUMMARY_FILE_PATH, index_col=0)
 PLAYLIST_DF_UL = PLAYLIST_DF.drop(columns=['pid'])
 
