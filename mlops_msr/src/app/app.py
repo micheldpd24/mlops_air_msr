@@ -20,7 +20,7 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = "secret"
 
 # Initialize TinyDB
-db_path = "users/users.json"
+db_path = "mlops_msr/users/users.json"
 db = TinyDB(db_path)
 user_table = db.table("users")
 
