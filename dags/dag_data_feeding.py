@@ -70,11 +70,66 @@ def get_songs_from_spotify():
     process_song_data()
 
 
-# Add new song into current songs base
-def update_songs_base():
-    """Main function to update the songs database."""
+# # Add new song into current songs base
+# def update_songs_base():
+#     """Main function to update the songs database."""
     
-    # logger.info("Starting process_and_merge_song_data")
+#     # logger.info("Starting process_and_merge_song_data")
+#     print("Starting songs base update")
+    
+#     # Step 1: Load the current song data
+#     df_old = pd.read_csv("data/raw/song_df.csv", index_col=0)
+#     n_songs_old = len(df_old)
+    
+#     # Step 2: Load the most recent interim file
+#     interim_directory = "data/interim"
+#     most_recent_file = get_most_recent_file(interim_directory, prefix="song_df", extension=".csv")
+#     df_to_add = pd.read_csv(os.path.join(interim_directory, most_recent_file), index_col=0)
+
+#     # Step 3: Concatenate old and new data and remove duplicates
+#     df_new = pd.concat([df_old, df_to_add], axis=0, ignore_index=True)
+#     df_new = df_new.drop_duplicates(subset=["uri"], ignore_index=True)  # Supprimer les doublons en fonction de la colonne "uri"
+
+#     # Step 4: Save the updated songs data
+#     df_new.to_csv("data/new/song_df.csv")
+#     print("New songs base saved to data/new/song_df.csv")
+
+#     # Step 5: Calculate the number of songs and delta (percentage change)
+#     n_songs_new = len(df_new)
+#     delta = (n_songs_new - n_songs_old) / n_songs_old if n_songs_old > 0 else float('inf')
+#     print(f"Current number of songs: {n_songs_old}")
+#     print(f"New number of songs: {n_songs_new}")
+#     print(f"delta: {delta * 100: .2f}%")
+#     # logger.info(f"delta: {delta * 100: .2f}%")
+    
+#     # Step 6: If new songs are added, perform archiving and update the raw songs base
+#     if delta > 0.01:
+#         print("Delta > 1%. Songs data increase")
+#         # logger.info("Delta > 1%. Songs data increase")
+        
+#         # Archive the old data
+#         archive_path_old = archive_old_file("data/raw/song_df.csv", "data/raw")
+#         archive_path_new = archive_old_file("data/new/song_df.csv", "data/new")
+        
+#         # Replace the old song base with the new data
+#         df_new.to_csv("data/raw/song_df.csv")
+#         print(f"New data info :\n {df_new.info()}")
+        
+#         # Log retrain_signal
+#         log_retrain_signal()
+
+#         print("New data loaded in the pipeline.")
+#         print(f"New data info :\n {df_new.info()}")    
+#     else:
+#         print("No changes in songs base.")
+#         # logger.info("No changes in songs base.")
+    
+#     # implicit push to xcom 
+#     return 1 if delta > 0.01 else 0
+
+def update_songs_base(delta_threshold=0.01):
+    """Main function to update the songs database with a configurable delta threshold."""
+    
     print("Starting songs base update")
     
     # Step 1: Load the current song data
@@ -88,7 +143,7 @@ def update_songs_base():
 
     # Step 3: Concatenate old and new data and remove duplicates
     df_new = pd.concat([df_old, df_to_add], axis=0, ignore_index=True)
-    df_new = df_new.drop_duplicates(subset=["uri"], ignore_index=True)  # Supprimer les doublons en fonction de la colonne "uri"
+    df_new = df_new.drop_duplicates(subset=["uri"], ignore_index=True)  # Remove duplicates based on "uri"
 
     # Step 4: Save the updated songs data
     df_new.to_csv("data/new/song_df.csv")
@@ -99,13 +154,11 @@ def update_songs_base():
     delta = (n_songs_new - n_songs_old) / n_songs_old if n_songs_old > 0 else float('inf')
     print(f"Current number of songs: {n_songs_old}")
     print(f"New number of songs: {n_songs_new}")
-    print(f"delta: {delta * 100: .2f}")
-    # logger.info(f"delta: {delta * 100: .2f}")
+    print(f"Delta: {delta * 100: .2f}%")
     
     # Step 6: If new songs are added, perform archiving and update the raw songs base
-    if delta > 1:
-        print("Delta > 1. Songs data increase")
-        # logger.info("Delta > 1. Songs data increase")
+    if delta > delta_threshold:
+        print(f"Delta > {delta_threshold * 100:.2f}%. Songs data increase")
         
         # Archive the old data
         archive_path_old = archive_old_file("data/raw/song_df.csv", "data/raw")
@@ -115,17 +168,16 @@ def update_songs_base():
         df_new.to_csv("data/raw/song_df.csv")
         print(f"New data info :\n {df_new.info()}")
         
-        # Log retrain_signal
+        # Log retrain signal
         log_retrain_signal()
 
         print("New data loaded in the pipeline.")
         print(f"New data info :\n {df_new.info()}")    
     else:
         print("No changes in songs base.")
-        # logger.info("No changes in songs base.")
     
-    # implicit push to xcom 
-    return 1 if delta > 1 else 0
+    # Return 1 if delta exceeds the threshold, otherwise return 0
+    return 1 if delta > delta_threshold else 0
 
 
 # check if there are new songs in the songs collected from Spotify
@@ -178,7 +230,7 @@ with DAG(
     'data_feeding_dag',
     default_args=default_args,
     description='run data_feeding.py every hour',
-    schedule_interval='45 * * * *',
+    schedule_interval='20 * * * *',
     start_date=datetime(2024, 11, 21, 15, 0),
     catchup=False,
 ) as dag:
@@ -207,6 +259,7 @@ with DAG(
         update_songs_base_task = PythonOperator(
             task_id='update_songs_base',
             python_callable=update_songs_base,
+            op_kwargs={'delta_threshold': 0.01}
             # trigger_rule = "none_failed_min_one_success",
         )
 
