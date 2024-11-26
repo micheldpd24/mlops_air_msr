@@ -2,11 +2,10 @@ import logging
 import requests
 
 # Set up logging to write to a file
-# timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
 logging.basicConfig(
     filename=f"tests_log.txt",  # Log file name
-    level=logging.INFO,  # Set the log level to INFO (you can change to DEBUG for more details)
+    level=logging.INFO,  # 
     format='%(asctime)s - %(levelname)s - %(message)s'  # Log format
 )
 
