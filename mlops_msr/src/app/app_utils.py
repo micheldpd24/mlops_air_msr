@@ -45,7 +45,7 @@ SIZE = os.getenv("SIZE")
 
 # playlists summaries of playlists from extract from million playlists dataset
 JSON_FILE_PATH = "data/raw/playlists.json"
-SUMMARY_FILE_PATH = Path("mlops_msr\data\processed\playlist_df.csv")
+SUMMARY_FILE_PATH = Path("data/processed/playlist_df.csv")
 PLAYLIST_DF = pd.read_csv(SUMMARY_FILE_PATH, index_col=0)
 PLAYLIST_DF_UL = PLAYLIST_DF.drop(columns=['pid'])
 

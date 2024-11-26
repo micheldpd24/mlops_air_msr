@@ -16,16 +16,28 @@ from functools import wraps
 from src.app.app_utils import predict_song
 from src.app.reco_monitoring import merge_reco_data, cosine_similarity_trend
 
+
 import re
+from flask import jsonify
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
-from flask import session
+from flask import Flask, session
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "secret"
 
+#céation d'une instance limiter
+limiter = Limiter(get_remote_address, app=app)
+
+# Configurer Flask-Limiter pour suivre l'adresse IP de chaque requête
+limiter = Limiter(
+    get_remote_address,
+    app=app,
+    default_limits=["200 per day", "50 per hour"]  # Limites globales par IP
+)
+
 # Initialize TinyDB
-db_path = "mlops_msr/users/users.json"
+db_path = "users/users.json"
 db = TinyDB(db_path)
 user_table = db.table("users")
 
@@ -74,6 +86,18 @@ def admin_required(f):
             return render_template("homepage.html")
     return decorated_function
 
+# --- Security: Password Validation ---
+# Ensures the password meets security requirements (length, upper case, digits, special chars)
+def is_valid_password(password):
+    if len(password) < 8:
+        return False
+    if not re.search(r"[A-Z]", password):
+        return False
+    if not re.search(r"\d", password):
+        return False
+    if not re.search(r"[!@#$%^&*()]", password):
+        return False
+    return True
 
 @app.route('/register', methods=["GET", "POST"])
 def register():
@@ -81,6 +105,12 @@ def register():
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
+
+        # Password validation check
+        if not is_valid_password(password):
+            flash("Password must be at least 8 characters long, include an uppercase letter, a digit, and a special character.")
+            return redirect(url_for("register"))
+        
         hashed_password = generate_password_hash(password)
 
         # Check if user already exists
@@ -96,8 +126,10 @@ def register():
 
     return render_template("sign_up.html")
 
-
 @app.route("/", methods=["GET", "POST"])
+# --- Security: Rate Limiting for Login Attempts ---
+# Limits the number of login attempts to prevent brute-force attacks
+@limiter.limit("5 per 15 minutes", error_message="Too many login attempts. Please try again in 15 minutes.")
 def login():
     if request.method == "POST":
         username = request.form.get("username")
@@ -136,7 +168,8 @@ def about():
 
 
 @app.route('/recommend', methods=['POST'])
-@login_required
+@login_required # Ensures user is logged in
+@limiter.limit("5 per minute", error_message="Too many recommendations requested. Please wait a moment and try again.")  # Custom error message
 def recommend():
     # requesting the playist reference (URL of Index) form the HTML form
     playlist_ref = request.form['URL']
@@ -204,6 +237,32 @@ def retrain():
 def show_cosine_similarity():
     graph_html = cosine_similarity_trend()
     return render_template("monitoring.html", graph_html=graph_html)
+
+
+@app.route('/delete_user', methods=["GET", "POST"])
+@login_required
+@admin_required
+def delete_user():
+    # If it's a POST request (form submission)
+    if request.method == "POST":
+        # Get the username from the form input
+        username_to_delete = request.form.get("username")
+
+        # Search for the user in the TinyDB
+        user_entry = user_table.get(Query().username == username_to_delete)
+
+        if user_entry:
+            # Delete the user from the database
+            user_table.remove(Query().username == username_to_delete)
+            flash(f"User '{username_to_delete}' has been successfully deleted.", "success")
+        else:
+            flash(f"User '{username_to_delete}' not found.", "danger")
+
+        # Redirect after handling POST request
+        return redirect(url_for('welcome'))  # Redirect to a page (e.g., welcome)
+
+    # If it's a GET request, render the delete user form
+    return render_template('delete_user_form.html')
 
 
 if __name__ == '__main__':
