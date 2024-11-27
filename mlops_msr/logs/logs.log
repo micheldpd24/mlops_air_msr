@@ -244,3 +244,35 @@
 2024-11-27 00:54:44,629 - werkzeug - INFO - 127.0.0.1 - - [27/Nov/2024 00:54:44] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
 2024-11-27 00:54:50,082 - werkzeug - INFO - 127.0.0.1 - - [27/Nov/2024 00:54:50] "GET /register HTTP/1.1" 200 -
 2024-11-27 00:54:50,386 - werkzeug - INFO - 127.0.0.1 - - [27/Nov/2024 00:54:50] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-27 12:30:54,659 - custom_logger - INFO - Custom logger module initialized.
+2024-11-27 12:30:54,934 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.10:5000
+2024-11-27 12:30:54,934 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-11-27 12:30:54,934 - werkzeug - INFO -  * Restarting with stat
+2024-11-27 12:30:58,928 - custom_logger - INFO - Custom logger module initialized.
+2024-11-27 12:30:59,092 - werkzeug - WARNING -  * Debugger is active!
+2024-11-27 12:30:59,107 - werkzeug - INFO -  * Debugger PIN: 139-851-480
+2024-11-27 12:31:06,516 - werkzeug - INFO - 127.0.0.1 - - [27/Nov/2024 12:31:06] "GET / HTTP/1.1" 200 -
+2024-11-27 12:31:06,861 - werkzeug - INFO - 127.0.0.1 - - [27/Nov/2024 12:31:06] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-27 12:31:08,379 - werkzeug - INFO - 127.0.0.1 - - [27/Nov/2024 12:31:08] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2024-11-27 12:34:55,084 - werkzeug - INFO -  * Detected change in 'C:\\Users\\yamad\\mlops_air_msr\\mlops_msr\\src\\app\\app.py', reloading
+2024-11-27 12:34:55,779 - werkzeug - INFO -  * Restarting with stat
+2024-11-27 12:35:00,420 - custom_logger - INFO - Custom logger module initialized.
+2024-11-27 12:35:00,591 - werkzeug - WARNING -  * Debugger is active!
+2024-11-27 12:35:00,596 - werkzeug - INFO -  * Debugger PIN: 139-851-480
+2024-11-27 12:35:07,322 - werkzeug - INFO - 127.0.0.1 - - [27/Nov/2024 12:35:07] "GET / HTTP/1.1" 200 -
+2024-11-27 12:35:07,465 - werkzeug - INFO - 127.0.0.1 - - [27/Nov/2024 12:35:07] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-27 12:36:10,100 - custom_logger - INFO - Custom logger module initialized.
+2024-11-27 12:36:10,289 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.10:5000
+2024-11-27 12:36:10,289 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-11-27 12:36:10,289 - werkzeug - INFO -  * Restarting with stat
+2024-11-27 12:36:14,617 - custom_logger - INFO - Custom logger module initialized.
+2024-11-27 12:36:14,799 - werkzeug - WARNING -  * Debugger is active!
+2024-11-27 12:36:14,806 - werkzeug - INFO -  * Debugger PIN: 139-851-480
+2024-11-27 12:36:59,969 - werkzeug - INFO - 127.0.0.1 - - [27/Nov/2024 12:36:59] "GET / HTTP/1.1" 200 -
+2024-11-27 12:37:00,332 - werkzeug - INFO - 127.0.0.1 - - [27/Nov/2024 12:37:00] "[36mGET /static/style.css HTTP/1.1[0m" 304 -

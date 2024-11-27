@@ -267,7 +267,13 @@ def delete_user():
 
 if __name__ == '__main__':
 
-    # Ensure session cookies are secure
-    app.config['SESSION_COOKIE_HTTPONLY'] = True
+    # Session cookie configuration
+    app.config['SESSION_COOKIE_SECURE'] = True  # Ensures cookies are sent only over HTTPS
+    app.config['SESSION_COOKIE_HTTPONLY'] = True  # Prevents JavaScript access to cookies
+    app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'  # Restricts cross-site usage of cookies
+
+    # Session expiration configuration
+    app.config['PERMANENT_SESSION_LIFETIME'] = 30 * 60  # Sets session lifetime to 30 minutes
+
 
     app.run(host="0.0.0.0", debug=True)
