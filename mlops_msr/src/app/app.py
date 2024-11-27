@@ -201,6 +201,32 @@ def show_cosine_similarity():
     return render_template("monitoring.html", graph_html=graph_html)
 
 
+@app.route('/delete_user', methods=["GET", "POST"])
+@login_required
+@admin_required
+def delete_user():
+    # If it's a POST request (form submission)
+    if request.method == "POST":
+        # Get the username from the form input
+        username_to_delete = request.form.get("username")
+
+        # Search for the user in the TinyDB
+        user_entry = user_table.get(Query().username == username_to_delete)
+
+        if user_entry:
+            # Delete the user from the database
+            user_table.remove(Query().username == username_to_delete)
+            flash(f"User '{username_to_delete}' has been successfully deleted.", "success")
+        else:
+            flash(f"User '{username_to_delete}' not found.", "danger")
+
+        # Redirect after handling POST request
+        return redirect(url_for('welcome'))  # Redirect to a page (e.g., welcome)
+
+    # If it's a GET request, render the delete user form
+    return render_template('delete_user_form.html')
+
+
 if __name__ == '__main__':
 
     # Ensure session cookies are secure

@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    container_name: test-rec
+    container_name: app-rec
     ports:
       - "5000:5000"   # Expose port 5000 for the Flask app
     volumes:
@@ -18,9 +18,26 @@ services:
     env_file:
       - mlflow_and_sp.env
     networks:
-      - app_network
+      - test_network
+    healthcheck:
+      test: ["CMD", "curl", "http:localhost:5000"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
     restart: unless-stopped  # Automatically restart the container if it fails
 
+  routes_test:
+    build: 
+      context: ./test_app
+    container_name: app-test
+    volumes:
+      - ./test_app:/app
+    restart: on-failure
+    depends_on:
+      - app
+    networks:
+      - test_network
+
 networks:
-  app_network:
+  test_network:
     driver: bridge

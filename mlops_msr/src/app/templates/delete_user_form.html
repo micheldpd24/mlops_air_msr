@@ -1,0 +1,60 @@
+<!-- delete_user_form.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete User</title>
+</head>
+<body>
+    <header class="p-3 bg-dark text-white">
+        <div class="container1">
+            <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+                <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                    <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap">
+                        <use xlink:href="#bootstrap"></use>
+                    </svg>
+                </a>
+
+                <h4 class="ms-auto">Songs Recommendation System by Mi.Sa.Ya</h4>
+                <ul class="nav nav-pills mb-3 justify-content-end">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page"></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page">Register</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Sign In</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/about">About</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+    </header>
+    <main>
+    <h2>Delete User</h2>
+    
+    <!-- Flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            <ul>
+            {% for category, message in messages %}
+                <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
+    {% endwith %}
+
+    <!-- Form to delete a user -->
+    <form action="{{ url_for('delete_user') }}" method="POST">
+        <label for="username">Username to Delete:</label>
+        <input type="text" id="username" name="username" required>
+        <button type="submit">Delete User</button>
+    </form>
+</main>
+</body>
+</html>

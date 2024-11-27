@@ -1,15 +1,44 @@
 # Project Overview
 Design and Implementation of an MLOps CI/CD Pipeline for a Music Recommendation System
-Developed a continuous integration and continuous deployment (CI/CD) pipeline for a music recommendation system leveraging Spotify music playlists. The pipeline's design is based on the methodology from the Datascientest MLOps wine quality competition project [add link].
-
-Pipeline Orchestration with Apache Airflow
+- Developed a continuous integration and continuous deployment (CI/CD) pipeline for a music recommendation system leveraging Spotify music playlists. The pipeline's design is based on the methodology from the Datascientest MLOps wine quality competition project [add link].
+- Pipeline Orchestration with Apache Airflow
 Configured and managed the orchestration of the pipeline using Apache Airflow, enabling automated, scalable, and efficient workflows.
 
-Experiment Monitoring with MLflow and Dagshub
+- Experiment Monitoring with MLflow and Dagshub
 Integrated MLflow for tracking machine learning experiments, model parameters, and performance metrics. With MLflow server setup in DagsHub.
 
-Containerization with Docker
+- Containerization with Docker
 Dockerized both the recommendation application and the pipeline orchestration, ensuring portability, scalability, and consistency across environments.
+
+# Setup - what you need to do to reproduce this project:
+
+1st clone the repos
+
+## Python virtual environment
+- python3 -m venv .venv # to create a virtual .venv python environnment for the project
+- source .venv/bin/activate # to activate the virtual environment (in linux or mac os environments)
+- python pip install -r requirements.txt  # to install all the packages needed for the project
+
+## Docker
+- Make sure you have Docker installed on you system
+
+## Spotify  / DagsHub / Mlflow id
+- get Spotify Client ID and Spotify CLient Secret from [Spotify for Developpers](https://developer.spotify.com/).
+- Create a Dagshub Repo for models experiments tracking with MLflow, make sure to get the MLFLOW URI
+- Open the file mlops_msr/mlflow_and_sp.env and input you id, secret and mlflow uri:
+  
+  MLFLOW_TRACKING_URI=https://dagshub.com/<your username>/<your repos name>.mlflow
+  MLFLOW_TRACKING_USERNAME=<your dagshub username>
+  MLFLOW_TRACKING_PASSWORD=<your mlflow tracking password>
+  CLIENT_ID=<your spotify api client id>
+  CLIENT_SECRET=<your spotify api client secret>
+After completion,  make sure to save the changes.
+- Unzip playlist.json.zip into mlops_msr/data/raw/playlist.json and delete the zip file
+- make sure you have dataset.zip in mlops_air_msr/mlops_msr/data/raw/. Since it is the original dataset of spotify songs to be used to initialize the pipeline
+
+## Running the pipeline
+First run this command from the root of your porject folder:
+
 
 # Setting up an MLOps project step by step 🚀
 
@@ -309,5 +338,5 @@ Congratulations! 🎉 Now that you have a structured and well-defined MLOps proj
 
 Each step is modularized, making it easy to maintain, extend, and scale your Machine Learning pipeline. 
 
-
+# Pipeline Orchestration with Apache Airflow
 
