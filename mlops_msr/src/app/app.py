@@ -22,6 +22,8 @@ from flask import jsonify
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask import Flask, session
+from datetime import datetime, timedelta
+
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "secret"
@@ -126,23 +128,51 @@ def register():
 
     return render_template("sign_up.html")
 
+# Configuration pour le suivi des tentatives
+FAILED_LOGIN_LIMIT = 5  # Nombre de tentatives avant blocage
+BLOCK_DURATION = timedelta(minutes=15)  # Durée de blocage (15 minutes)
+
+# Dictionnaire pour suivre les tentatives échouées par utilisateur
+failed_attempts = {}
+
 @app.route("/", methods=["GET", "POST"])
-# --- Security: Rate Limiting for Login Attempts ---
-# Limits the number of login attempts to prevent brute-force attacks
-@limiter.limit("5 per 15 minutes", error_message="Too many login attempts. Please try again in 15 minutes.")
 def login():
+    global failed_attempts
+
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
 
+        now = datetime.now()
+        user_attempts = failed_attempts.get(username, {"count": 0, "last_attempt": None, "blocked_until": None})
+
+        # Vérification si le compte est bloqué
+        if user_attempts["blocked_until"] and now < user_attempts["blocked_until"]:
+            remaining_time = (user_attempts["blocked_until"] - now).seconds // 60
+            flash(f"Too many failed login attempts. Your account is locked. Try again in {remaining_time} minutes.", category="login_error")
+            return render_template("homepage.html")
+
+        # Vérification des identifiants
         user_entry = user_table.get(Query().username == username)
         if user_entry and check_password_hash(user_entry['password'], password):
+            # Réinitialiser les tentatives après un succès
+            failed_attempts.pop(username, None)
             user = Users(user_entry.doc_id, user_entry['username'], user_entry['password'], user_entry.get('role', 'user'))
-            remember = True if request.form.get("remember") else False
-            login_user(user, remember=remember)
+            login_user(user)
             return redirect(url_for("welcome"))
         else:
-            flash("Login failed. Check your username and password.")
+            # Échec d'authentification
+            user_attempts["count"] += 1
+            user_attempts["last_attempt"] = now
+
+            if user_attempts["count"] >= FAILED_LOGIN_LIMIT:
+                user_attempts["blocked_until"] = now + BLOCK_DURATION
+                flash("Too many failed login attempts. Your account is temporarily locked.", category="login_error")
+            else:
+                attempts_left = FAILED_LOGIN_LIMIT - user_attempts["count"]
+                flash(f"Login failed. You have {attempts_left} attempts left.", category="login_error")
+
+            failed_attempts[username] = user_attempts
 
     return render_template("homepage.html")
 

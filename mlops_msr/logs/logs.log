@@ -276,3 +276,203 @@
 2024-11-27 12:36:14,806 - werkzeug - INFO -  * Debugger PIN: 139-851-480
 2024-11-27 12:36:59,969 - werkzeug - INFO - 127.0.0.1 - - [27/Nov/2024 12:36:59] "GET / HTTP/1.1" 200 -
 2024-11-27 12:37:00,332 - werkzeug - INFO - 127.0.0.1 - - [27/Nov/2024 12:37:00] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:17:41,995 - custom_logger - INFO - Custom logger module initialized.
+2024-11-28 14:18:36,242 - custom_logger - INFO - Custom logger module initialized.
+2024-11-28 14:18:36,463 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.10:5000
+2024-11-28 14:18:36,463 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-11-28 14:18:36,467 - werkzeug - INFO -  * Restarting with stat
+2024-11-28 14:18:40,825 - custom_logger - INFO - Custom logger module initialized.
+2024-11-28 14:18:40,992 - werkzeug - WARNING -  * Debugger is active!
+2024-11-28 14:18:40,995 - werkzeug - INFO -  * Debugger PIN: 139-851-480
+2024-11-28 14:19:04,445 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:19:04] "GET / HTTP/1.1" 200 -
+2024-11-28 14:19:04,794 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:19:04] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:19:24,618 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:19:24] "POST / HTTP/1.1" 200 -
+2024-11-28 14:19:24,741 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:19:24] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:19:32,355 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:19:32] "POST / HTTP/1.1" 200 -
+2024-11-28 14:19:32,395 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:19:32] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:19:37,948 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:19:37] "POST / HTTP/1.1" 200 -
+2024-11-28 14:19:38,091 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:19:38] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:19:44,287 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:19:44] "POST / HTTP/1.1" 200 -
+2024-11-28 14:19:44,320 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:19:44] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:19:55,444 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:19:55] "POST / HTTP/1.1" 200 -
+2024-11-28 14:19:55,567 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:19:55] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:20:05,388 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:20:05] "POST / HTTP/1.1" 200 -
+2024-11-28 14:20:05,440 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:20:05] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:20:13,675 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:20:13] "GET /register HTTP/1.1" 200 -
+2024-11-28 14:20:13,980 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:20:13] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:20:30,870 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:20:30] "[32mPOST /register HTTP/1.1[0m" 302 -
+2024-11-28 14:20:30,881 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:20:30] "GET /register HTTP/1.1" 200 -
+2024-11-28 14:20:30,920 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:20:30] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:20:49,995 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:20:49] "[32mPOST /register HTTP/1.1[0m" 302 -
+2024-11-28 14:20:50,007 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:20:50] "GET /register HTTP/1.1" 200 -
+2024-11-28 14:20:50,082 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:20:50] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:20:57,775 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:20:57] "GET / HTTP/1.1" 200 -
+2024-11-28 14:20:58,003 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:20:58] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:21:09,042 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:21:09] "POST / HTTP/1.1" 200 -
+2024-11-28 14:21:09,345 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:21:09] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:21:45,643 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:21:45] "POST / HTTP/1.1" 200 -
+2024-11-28 14:21:45,670 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:21:45] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:21:57,443 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:21:57] "POST / HTTP/1.1" 200 -
+2024-11-28 14:21:57,767 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:21:57] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:22:12,041 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:22:12] "POST / HTTP/1.1" 200 -
+2024-11-28 14:22:12,078 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:22:12] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:22:22,941 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:22:22] "POST / HTTP/1.1" 200 -
+2024-11-28 14:22:23,241 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:22:23] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:27:28,992 - werkzeug - INFO -  * Detected change in 'C:\\Users\\yamad\\mlops_air_msr\\mlops_msr\\src\\app\\app.py', reloading
+2024-11-28 14:27:29,524 - werkzeug - INFO -  * Restarting with stat
+2024-11-28 14:27:34,200 - custom_logger - INFO - Custom logger module initialized.
+2024-11-28 14:27:34,374 - werkzeug - WARNING -  * Debugger is active!
+2024-11-28 14:27:34,374 - werkzeug - INFO -  * Debugger PIN: 139-851-480
+2024-11-28 14:27:51,017 - werkzeug - INFO -  * Detected change in 'C:\\Users\\yamad\\mlops_air_msr\\mlops_msr\\src\\app\\app.py', reloading
+2024-11-28 14:27:51,536 - werkzeug - INFO -  * Restarting with stat
+2024-11-28 14:27:56,102 - custom_logger - INFO - Custom logger module initialized.
+2024-11-28 14:27:56,311 - werkzeug - WARNING -  * Debugger is active!
+2024-11-28 14:27:56,316 - werkzeug - INFO -  * Debugger PIN: 139-851-480
+2024-11-28 14:28:02,474 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:28:02] "GET /register HTTP/1.1" 200 -
+2024-11-28 14:28:02,825 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:28:02] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:28:27,855 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:28:27] "[32mPOST /register HTTP/1.1[0m" 302 -
+2024-11-28 14:28:27,981 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:28:27] "GET /register HTTP/1.1" 200 -
+2024-11-28 14:28:28,335 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:28:28] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:28:44,233 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:28:44] "[32mPOST /register HTTP/1.1[0m" 302 -
+2024-11-28 14:28:44,353 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:28:44] "GET / HTTP/1.1" 200 -
+2024-11-28 14:28:44,744 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:28:44] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:29:03,538 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:29:03] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-11-28 14:29:03,689 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:29:03] "GET /welcome HTTP/1.1" 200 -
+2024-11-28 14:29:04,076 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:29:04] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:29:07,950 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:29:07] "[32mGET /logout HTTP/1.1[0m" 302 -
+2024-11-28 14:29:08,257 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:29:08] "GET / HTTP/1.1" 200 -
+2024-11-28 14:29:08,620 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:29:08] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:29:17,551 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:29:17] "POST / HTTP/1.1" 200 -
+2024-11-28 14:29:17,707 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:29:17] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:29:24,366 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:29:24] "POST / HTTP/1.1" 200 -
+2024-11-28 14:29:24,410 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:29:24] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:29:31,306 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:29:31] "POST / HTTP/1.1" 200 -
+2024-11-28 14:29:31,445 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:29:31] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:29:37,678 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:29:37] "POST / HTTP/1.1" 200 -
+2024-11-28 14:29:37,713 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:29:37] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:29:44,251 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:29:44] "POST / HTTP/1.1" 200 -
+2024-11-28 14:29:44,364 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:29:44] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:29:53,605 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:29:53] "POST / HTTP/1.1" 200 -
+2024-11-28 14:29:53,638 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:29:53] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:34:02,567 - werkzeug - INFO -  * Detected change in 'C:\\Users\\yamad\\mlops_air_msr\\mlops_msr\\src\\app\\app.py', reloading
+2024-11-28 14:34:03,111 - werkzeug - INFO -  * Restarting with stat
+2024-11-28 14:34:08,003 - custom_logger - INFO - Custom logger module initialized.
+2024-11-28 14:34:08,186 - werkzeug - WARNING -  * Debugger is active!
+2024-11-28 14:34:08,192 - werkzeug - INFO -  * Debugger PIN: 139-851-480
+2024-11-28 14:34:23,752 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:34:23] "GET /register HTTP/1.1" 200 -
+2024-11-28 14:34:24,063 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:34:24] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:35:27,286 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:35:27] "GET /register HTTP/1.1" 200 -
+2024-11-28 14:35:27,321 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:35:27] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:35:35,117 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:35:35] "GET / HTTP/1.1" 200 -
+2024-11-28 14:35:35,449 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:35:35] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:35:39,633 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:35:39] "GET /register HTTP/1.1" 200 -
+2024-11-28 14:35:39,696 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:35:39] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:36:00,973 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:36:00] "GET / HTTP/1.1" 200 -
+2024-11-28 14:36:01,301 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:36:01] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:36:10,551 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:36:10] "POST / HTTP/1.1" 200 -
+2024-11-28 14:36:10,597 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:36:10] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:36:14,280 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:36:14] "GET /register HTTP/1.1" 200 -
+2024-11-28 14:36:14,495 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:36:14] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:36:28,553 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:36:28] "GET / HTTP/1.1" 200 -
+2024-11-28 14:36:28,881 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:36:28] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:36:35,734 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:36:35] "POST / HTTP/1.1" 200 -
+2024-11-28 14:36:35,776 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:36:35] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:36:38,020 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:36:38] "GET /register HTTP/1.1" 200 -
+2024-11-28 14:36:38,270 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:36:38] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:36:40,448 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:36:40] "GET / HTTP/1.1" 200 -
+2024-11-28 14:36:40,782 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:36:40] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:36:47,375 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:36:47] "POST / HTTP/1.1" 200 -
+2024-11-28 14:36:47,415 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:36:47] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:36:49,304 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:36:49] "GET /register HTTP/1.1" 200 -
+2024-11-28 14:36:49,536 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:36:49] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:36:52,098 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:36:52] "GET / HTTP/1.1" 200 -
+2024-11-28 14:36:52,412 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:36:52] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:36:59,233 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:36:59] "POST / HTTP/1.1" 200 -
+2024-11-28 14:36:59,275 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:36:59] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:37:01,179 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:37:01] "GET /register HTTP/1.1" 200 -
+2024-11-28 14:37:01,488 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:37:01] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:37:03,613 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:37:03] "GET / HTTP/1.1" 200 -
+2024-11-28 14:37:03,860 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:37:03] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:37:10,162 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:37:10] "POST / HTTP/1.1" 200 -
+2024-11-28 14:37:10,285 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:37:10] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:37:12,405 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:37:12] "GET /register HTTP/1.1" 200 -
+2024-11-28 14:37:12,666 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:37:12] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:51:16,019 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:51:16] "GET /register HTTP/1.1" 200 -
+2024-11-28 14:51:16,054 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:51:16] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:51:19,047 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:51:19] "GET / HTTP/1.1" 200 -
+2024-11-28 14:51:19,363 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:51:19] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:51:21,896 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:51:21] "GET /register HTTP/1.1" 200 -
+2024-11-28 14:51:22,153 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:51:22] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:51:24,291 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:51:24] "GET / HTTP/1.1" 200 -
+2024-11-28 14:51:24,611 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:51:24] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:51:31,796 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:51:31] "POST / HTTP/1.1" 200 -
+2024-11-28 14:51:31,865 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:51:31] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:51:34,665 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:51:34] "GET /register HTTP/1.1" 200 -
+2024-11-28 14:51:34,876 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:51:34] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:51:41,178 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:51:41] "GET / HTTP/1.1" 200 -
+2024-11-28 14:51:41,504 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:51:41] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:51:45,288 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:51:45] "GET / HTTP/1.1" 200 -
+2024-11-28 14:51:45,326 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:51:45] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:51:52,204 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:51:52] "POST / HTTP/1.1" 200 -
+2024-11-28 14:51:52,240 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:51:52] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:51:54,742 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:51:54] "GET /register HTTP/1.1" 200 -
+2024-11-28 14:51:55,047 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:51:55] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:52:51,987 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:52:51] "GET / HTTP/1.1" 200 -
+2024-11-28 14:52:52,209 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:52:52] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:53:00,048 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:53:00] "POST / HTTP/1.1" 200 -
+2024-11-28 14:53:00,156 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:53:00] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:53:02,147 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:53:02] "GET /register HTTP/1.1" 200 -
+2024-11-28 14:53:02,369 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:53:02] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:53:18,475 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:53:18] "GET / HTTP/1.1" 200 -
+2024-11-28 14:53:18,802 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:53:18] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:53:24,883 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:53:24] "POST / HTTP/1.1" 200 -
+2024-11-28 14:53:24,919 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:53:24] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:53:26,999 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:53:26] "GET /register HTTP/1.1" 200 -
+2024-11-28 14:53:27,212 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:53:27] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:55:05,046 - werkzeug - INFO -  * Detected change in 'C:\\Users\\yamad\\mlops_air_msr\\mlops_msr\\src\\app\\app.py', reloading
+2024-11-28 14:55:05,547 - werkzeug - INFO -  * Restarting with stat
+2024-11-28 14:55:10,269 - custom_logger - INFO - Custom logger module initialized.
+2024-11-28 14:55:10,477 - werkzeug - WARNING -  * Debugger is active!
+2024-11-28 14:55:10,482 - werkzeug - INFO -  * Debugger PIN: 139-851-480
+2024-11-28 14:55:18,289 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:55:18] "GET /register HTTP/1.1" 200 -
+2024-11-28 14:55:18,428 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:55:18] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:55:21,451 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:55:21] "GET / HTTP/1.1" 200 -
+2024-11-28 14:55:21,789 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:55:21] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:55:30,635 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:55:30] "POST / HTTP/1.1" 200 -
+2024-11-28 14:55:30,692 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:55:30] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:55:33,902 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:55:33] "GET /register HTTP/1.1" 200 -
+2024-11-28 14:55:34,130 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:55:34] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:58:25,580 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:58:25] "GET /register HTTP/1.1" 200 -
+2024-11-28 14:58:25,607 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:58:25] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:58:32,046 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:58:32] "[32mPOST /register HTTP/1.1[0m" 302 -
+2024-11-28 14:58:32,351 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:58:32] "GET /register HTTP/1.1" 200 -
+2024-11-28 14:58:32,706 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:58:32] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:58:37,463 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:58:37] "GET / HTTP/1.1" 200 -
+2024-11-28 14:58:37,777 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:58:37] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:58:45,698 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:58:45] "POST / HTTP/1.1" 200 -
+2024-11-28 14:58:45,754 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:58:45] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:59:06,079 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:59:06] "POST / HTTP/1.1" 200 -
+2024-11-28 14:59:06,117 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:59:06] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:59:11,593 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:59:11] "POST / HTTP/1.1" 200 -
+2024-11-28 14:59:11,717 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:59:11] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:59:21,425 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:59:21] "POST / HTTP/1.1" 200 -
+2024-11-28 14:59:21,457 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:59:21] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 14:59:32,021 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:59:32] "POST / HTTP/1.1" 200 -
+2024-11-28 14:59:32,330 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 14:59:32] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 15:00:16,947 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 15:00:16] "POST / HTTP/1.1" 200 -
+2024-11-28 15:00:16,975 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 15:00:16] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 15:00:24,862 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 15:00:24] "POST / HTTP/1.1" 200 -
+2024-11-28 15:00:25,162 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 15:00:25] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 15:01:53,213 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 15:01:53] "POST / HTTP/1.1" 200 -
+2024-11-28 15:01:53,257 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 15:01:53] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 15:02:15,354 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 15:02:15] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-11-28 15:02:15,483 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 15:02:15] "GET /welcome HTTP/1.1" 200 -
+2024-11-28 15:02:15,838 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 15:02:15] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 15:02:20,495 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 15:02:20] "[32mGET /logout HTTP/1.1[0m" 302 -
+2024-11-28 15:02:20,825 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 15:02:20] "GET / HTTP/1.1" 200 -
+2024-11-28 15:02:20,887 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 15:02:20] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 15:02:33,570 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 15:02:33] "POST / HTTP/1.1" 200 -
+2024-11-28 15:02:33,885 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 15:02:33] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
