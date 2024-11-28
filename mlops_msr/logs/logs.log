@@ -476,3 +476,23 @@
 2024-11-28 15:02:20,887 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 15:02:20] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
 2024-11-28 15:02:33,570 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 15:02:33] "POST / HTTP/1.1" 200 -
 2024-11-28 15:02:33,885 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 15:02:33] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 15:48:01,663 - custom_logger - INFO - Custom logger module initialized.
+2024-11-28 15:48:01,990 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://192.168.1.10:5000
+2024-11-28 15:48:01,990 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2024-11-28 15:48:01,992 - werkzeug - INFO -  * Restarting with stat
+2024-11-28 15:48:06,461 - custom_logger - INFO - Custom logger module initialized.
+2024-11-28 15:48:06,650 - werkzeug - WARNING -  * Debugger is active!
+2024-11-28 15:48:06,655 - werkzeug - INFO -  * Debugger PIN: 139-851-480
+2024-11-28 15:48:34,223 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 15:48:34] "POST / HTTP/1.1" 200 -
+2024-11-28 15:48:34,395 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 15:48:34] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 15:48:55,038 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 15:48:55] "[32mPOST / HTTP/1.1[0m" 302 -
+2024-11-28 15:48:55,184 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 15:48:55] "GET /welcome HTTP/1.1" 200 -
+2024-11-28 15:48:55,536 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 15:48:55] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 15:48:57,873 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 15:48:57] "[32mGET /logout HTTP/1.1[0m" 302 -
+2024-11-28 15:48:58,197 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 15:48:58] "GET / HTTP/1.1" 200 -
+2024-11-28 15:48:58,271 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 15:48:58] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
+2024-11-28 15:49:07,360 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 15:49:07] "POST / HTTP/1.1" 200 -
+2024-11-28 15:49:07,508 - werkzeug - INFO - 127.0.0.1 - - [28/Nov/2024 15:49:07] "[36mGET /static/style.css HTTP/1.1[0m" 304 -
