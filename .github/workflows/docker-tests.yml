@@ -45,7 +45,7 @@ jobs:
 
     - name: Run Functional Tests
       run: |
-        python test_app/routes_tests.py  # Exécuter ton script de tests
+        python mlops_msr/test_app/routes_tests.py  # Exécuter ton script de tests
 
     - name: Tear Down
       if: always()
