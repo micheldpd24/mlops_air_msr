@@ -3,41 +3,41 @@ version: '3.9'
 services:
   app:
     build:
-      context: .
-      dockerfile: Dockerfile
+      context: .  # Chemin de construction de l'image Docker
+      dockerfile: Dockerfile  # Utilise le Dockerfile dans le même répertoire
     container_name: app-rec
     ports:
-      - "5000:5000"   # Expose port 5000 for the Flask app
+      - "5000:5000"  # Expose le port 5000 de l'application Flask
     volumes:
-      - ./data:/appli/data  # Mount the host's 'data' directory to the container's '/appli/data'
-      - ./logs:/appli/logs   # Mount the host's 'logs' directory to the container's '/appli/logs'
-      - ./users:/appli/users   # Mount the host's 'users' directory to the container's '/appli/users'
+      - ./data:/appli/data  # Monte les données dans le conteneur
+      - ./logs:/appli/logs  # Monte les logs dans le conteneur
+      - ./users:/appli/users  # Monte les utilisateurs dans le conteneur
     environment:
-      FLASK_ENV: development  # Example environment variable (you can adjust this based on your app)
+      FLASK_ENV: development
       SIZE: 500
     env_file:
-      - mlflow_and_sp.env
+      - mlflow_and_sp.env  # Fichier d'environnement
     networks:
-      - test_network
+      - test_network  # Reseau pour la communication entre services
     healthcheck:
-      test: ["CMD", "curl", "http:localhost:5000"]
+      test: ["CMD", "curl", "http://localhost:5000"]  # Vérifie la disponibilité de l'application
       interval: 30s
       timeout: 10s
       retries: 5
-    restart: unless-stopped  # Automatically restart the container if it fails
+    restart: unless-stopped  # Redémarre automatiquement le conteneur en cas d'échec
 
   routes_test:
-    build: 
-      context: ./test_app
+    build:
+      context: ./test_app  # Contexte de build du répertoire des tests
     container_name: app-test
     volumes:
-      - ./test_app:/app
-    restart: on-failure
+      - ./test_app:/app  # Monte les tests dans le conteneur
+    restart: on-failure  # Redémarre le conteneur en cas d'échec des tests
     depends_on:
-      - app
+      - app  # Dépend du service app pour démarrer
     networks:
-      - test_network
+      - test_network  # Réseau pour la communication entre services
 
 networks:
   test_network:
-    driver: bridge
+    driver: bridge  # Utilise un réseau bridge pour la communication
