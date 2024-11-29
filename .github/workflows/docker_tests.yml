@@ -11,20 +11,22 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # Étape 1 : Vérification du code source
+    # Étape 1 : Vérification du dépôt
     - name: Checkout repository
       uses: actions/checkout@v3
 
-    # Étape 2 : Configurer Docker
-    - name: Set up Docker
-      uses: docker/setup-buildx-action@v2
+    # Étape 2 : Installer Docker et Docker Compose
+    - name: Set up Docker and Docker Compose
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y docker-compose
 
     # Étape 3 : Construire et exécuter Docker Compose
     - name: Build and Run Docker Compose
       run: |
-        docker-compose down || true  # Arrête les conteneurs existants (si nécessaire)
+        docker-compose down || true  # Arrête les conteneurs existants
         docker-compose up --build --abort-on-container-exit
-      continue-on-error: true  # Permet d'aller à l'étape suivante même si des tests échouent
+      continue-on-error: true
 
     # Étape 4 : Afficher les logs des tests
     - name: Display Test Logs
