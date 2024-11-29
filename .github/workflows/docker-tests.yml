@@ -1,4 +1,4 @@
-name: CI - Run Flask App and Tests
+name: CI - Run Flask App and Functional Tests
 
 on:
   push:
@@ -22,7 +22,7 @@ jobs:
     - name: Install Docker Compose
       run: |
         sudo apt-get update
-        sudo apt-get install -y docker-compose  # Installer docker-compose sur le runner GitHub
+        sudo apt-get install -y docker-compose  # Installer docker-compose sur le runner
 
     - name: Build and Start Services with Docker Compose
       run: |
@@ -40,10 +40,10 @@ jobs:
           sleep 10
         done
         echo "App did not become ready in time."
-        docker logs app-rec  # Afficher les logs de l'application Flask pour le débogage
+        docker logs app-rec  # Affiche les logs de l'application Flask pour le débogage
         exit 1
 
-    - name: Run Tests with pytest
+    - name: Run Functional Tests
       run: |
         python test_app/tests.py  # Exécuter ton script de tests
 
