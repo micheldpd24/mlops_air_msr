@@ -22,18 +22,24 @@ from flask import jsonify
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from flask import Flask, session
+from datetime import datetime, timedelta
+import pylibmc  # ***
+
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "secret"
 
-#céation d'une instance limiter
-limiter = Limiter(get_remote_address, app=app)
+# Set up the Memcached client
+memcached_client = pylibmc.Client(["127.0.0.1"], binary=True)
 
-# Configurer Flask-Limiter pour suivre l'adresse IP de chaque requête
+
+
+#céation d'une instance limiter
 limiter = Limiter(
-    get_remote_address,
+    get_remote_address, 
     app=app,
-    default_limits=["200 per day", "50 per hour"]  # Limites globales par IP
+    default_limits=["200 per day", "50 per hour"],  # Limites globales par IP
+    storage_uri="memory: 127.0.0.1:5000"  # ***
 )
 
 # Initialize TinyDB
