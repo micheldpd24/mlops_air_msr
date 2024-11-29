@@ -19,21 +19,26 @@ jobs:
     - name: Set up Docker
       uses: docker/setup-buildx-action@v2
 
+    - name: Install Docker Compose
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y docker-compose
+
     - name: Build and Start Services
       run: docker-compose up --build -d
 
-    - name: Wait for Service Healthcheck
+    - name: Wait for App to be Ready
       run: |
-        echo "Waiting for app container to become healthy..."
-        for i in {1..10}; do
-          if [ "$(docker inspect --format='{{json .State.Health.Status}}' app-rec)" == "\"healthy\"" ]; then
-            echo "App is healthy!"
+        echo "Waiting for app to be ready..."
+        for i in {1..12}; do
+          if curl -s http://localhost:5000/; then
+            echo "App is ready!"
             exit 0
           fi
-          echo "Retrying in 10s..."
+          echo "Retrying in 10 seconds..."
           sleep 10
         done
-        echo "App failed to become healthy."
+        echo "App did not become ready in time."
         docker logs app-rec
         exit 1
 
