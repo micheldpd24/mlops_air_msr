@@ -22,11 +22,11 @@ jobs:
     - name: Install Docker Compose
       run: |
         sudo apt-get update
-        sudo apt-get install -y docker-compose  # Installer docker-compose
+        sudo apt-get install -y docker-compose  # Installer docker-compose sur le runner GitHub
 
     - name: Build and Start Services with Docker Compose
       run: |
-        docker-compose up --build -d  # Démarrer l'application Flask et les services en arrière-plan
+        docker-compose -f mlops_msr/docker-compose.yaml up --build -d  # Utiliser le fichier docker-compose spécifique
 
     - name: Wait for App to be Ready
       run: |
@@ -40,7 +40,7 @@ jobs:
           sleep 10
         done
         echo "App did not become ready in time."
-        docker logs app-rec  # Affiche les logs de l'application Flask pour le débogage
+        docker logs app-rec  # Afficher les logs de l'application Flask pour le débogage
         exit 1
 
     - name: Run Tests with pytest
@@ -49,4 +49,4 @@ jobs:
 
     - name: Tear Down
       if: always()
-      run: docker-compose down  # Nettoyer les conteneurs après les tests
+      run: docker-compose -f mlops_msr/docker-compose.yaml down  # Nettoyer les conteneurs après les tests
