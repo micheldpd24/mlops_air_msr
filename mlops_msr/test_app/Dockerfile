@@ -8,7 +8,7 @@ WORKDIR /app
 COPY routes_test.py .
 
 # Installations des dépendances
-RUN pip install requests
+RUN pip install requests tinydb
 
 # Exécution du script python qui lance les requêtes
 CMD ["python", "/app/routes_test.py"]

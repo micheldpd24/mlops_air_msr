@@ -21,7 +21,7 @@ import re
 from flask import jsonify
 from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
-from flask import Flask, session
+from flask import Flask
 from datetime import datetime, timedelta
 import pylibmc  # ***
 
@@ -39,7 +39,7 @@ limiter = Limiter(
     get_remote_address, 
     app=app,
     default_limits=["200 per day", "50 per hour"],  # Limites globales par IP
-    storage_uri="memory: 127.0.0.1:5000"  # ***
+    storage_uri="memory: 127.0.0.1:5000" 
 )
 
 # Initialize TinyDB
@@ -306,7 +306,7 @@ def delete_user():
 if __name__ == '__main__':
 
     # Session cookie configuration
-    app.config['SESSION_COOKIE_SECURE'] = True  # Ensures cookies are sent only over HTTPS
+    # app.config['SESSION_COOKIE_SECURE'] = True  # Ensures cookies are sent only over HTTPS
     app.config['SESSION_COOKIE_HTTPONLY'] = True  # Prevents JavaScript access to cookies
     app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'  # Restricts cross-site usage of cookies
 

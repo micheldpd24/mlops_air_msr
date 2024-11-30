@@ -32,7 +32,9 @@ services:
     container_name: app-test
     volumes:
       - ./test_app:/app  # Monte les tests dans le conteneur
+      - ./users:/app/users
     restart: on-failure  # Redémarre le conteneur en cas d'échec des tests
+
     depends_on:
       - app  # Dépend du service app pour démarrer
     networks:
