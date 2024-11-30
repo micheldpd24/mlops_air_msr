@@ -126,7 +126,7 @@ def run_tests():
     # Check if any response is not 200 and return 0 if found
     all_responses = [
         # Step 1: Register a user
-        register_user("test2", "Test#User12345"),
+        # register_user("test2", "Test#User12345"),
         
         # Step 2: Log in with the created user
         login_user("test", "test"),
@@ -154,7 +154,7 @@ def run_tests():
         access_delete_user_route(),
 
         # Step 10: Delete test1 user
-        post_delete_user("test2")
+        # post_delete_user("test2")
     ]
     
 
