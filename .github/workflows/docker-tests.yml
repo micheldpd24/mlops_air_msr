@@ -40,13 +40,14 @@ jobs:
           sleep 10
         done
         echo "App did not become ready in time."
-        docker logs app-rec  # Affiche les logs de l'application Flask pour le débogage
+        docker logs app-rec  # Afficher les logs de l'application Flask pour le débogage
         exit 1
 
     - name: Run Functional Tests
       run: |
-        python test_app/routes_tests.py  # Exécuter ton script de tests
+        python mlops_msr/test_app/routes_test.py  # Référence correcte du fichier de tests avec le chemin relatif
 
     - name: Tear Down
       if: always()
       run: docker-compose -f mlops_msr/docker-compose.yaml down  # Nettoyer les conteneurs après les tests
+
