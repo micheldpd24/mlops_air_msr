@@ -25,10 +25,8 @@ from pathlib import Path
 # --------
 
 from dag_utils import(
-    load_txt, move_file_to_archives, navigate_between_folders, 
-    delete_csv_files, delete_folder, get_most_recent_file, 
+    get_most_recent_file, 
     archive_old_file, log_retrain_signal,
-    get_genre_uris, get_audio_features, get_genre_songs_features,
     get_all_genres_features, process_song_data,
     run_stage
 )
@@ -127,7 +125,7 @@ def get_songs_from_spotify():
 #     # implicit push to xcom 
 #     return 1 if delta > 0.01 else 0
 
-def update_songs_base(delta_threshold=0.01):
+def update_songs_base(delta_threshold=0.03):
     """Main function to update the songs database with a configurable delta threshold."""
     
     print("Starting songs base update")
@@ -259,7 +257,7 @@ with DAG(
         update_songs_base_task = PythonOperator(
             task_id='update_songs_base',
             python_callable=update_songs_base,
-            op_kwargs={'delta_threshold': 0.01}
+            op_kwargs={'delta_threshold': 0.05}
             # trigger_rule = "none_failed_min_one_success",
         )
 
