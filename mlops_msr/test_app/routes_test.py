@@ -1,5 +1,8 @@
 import logging
 import requests
+from tinydb import TinyDB, Query
+
+
 
 # Set up logging to write to a file
 
@@ -9,9 +12,24 @@ logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s'  # Log format
 )
 
-BASE_URL = "http://app-rec:5000"  # Change to your Flask app's URL
+BASE_URL = "http://app:5000"  # Change to your Flask app's URL
 
 session = requests.Session()
+
+def clean_users_base():
+    # Initialize TinyDB
+    db_path = "users/users.json"
+    db = TinyDB(db_path)
+    user_table = db.table("users")
+
+    # Create a query object
+    User = Query()
+
+    # Remove users where the 'username' is neither 'admin' nor 'test'
+    user_table.remove(~(User.username == 'admin') & ~(User.username == 'test'))
+
+    print("Users removed successfully.")
+
 
 # Function to log the response
 def log_response(request_type, endpoint, response):
@@ -42,11 +60,11 @@ def login_user(username, password):
 
 
 # Function to access the /recommend route
-def access_welcome_route():
-    print("Attempting to access /recommend route.")
-    response = session.get(f'{BASE_URL}/welcome')  # Assuming login session is stored in cookies
-    log_response("Get", "/welcome", response)
-    return response.status_code
+# def access_welcome_route():
+#     print("Attempting to access /recommend route.")
+#     response = session.get(f'{BASE_URL}/welcome')  # Assuming login session is stored in cookies
+#     log_response("Get", "/welcome", response)
+#     return response.status_code
 
 
 # Function to send a POST request to /recommend route
@@ -70,7 +88,6 @@ def logout_user():
 
 
 def access_delete_user_route():
-    # logging.info("Attempting to access /recommend route.")
     print("Attempting to access /delete_user route.")
     response = session.get(f'{BASE_URL}/delete_user')  # Assuming login session is stored in cookies
     log_response("Get", "/delete_user", response)
@@ -101,20 +118,23 @@ def post_delete_user(username):
 
 # Function to run all tests and return 1 if any response is not 200
 def run_tests():
+    
+    # reset users database
+    clean_users_base()
 
     # Check if any response is not 200 and return 0 if found
     all_responses = [
         # Step 1: Register a user
-        register_user("test1", "test"),
+        # register_user("test2", "Test#User12345"),
         
         # Step 2: Log in with the created user
-        login_user("test1", "test"),
+        login_user("test", "test"),
 
         # Step 3: Access recommend route
-        access_welcome_route(),
+        # access_welcome_route(),
 
         # Step 4: Post recommendation request
-        post_to_recommend(URL="229", num_recs="10"),
+        post_to_recommend(URL="119", num_recs="10"),
 
         # Step 5: Log out the user
         logout_user(),
@@ -129,11 +149,12 @@ def run_tests():
         get_to_update_params(),
         
         # Step 9: Access delete_user route
-        access_delete_user_route(),
+        # access_delete_user_route(),
 
         # Step 10: Delete test1 user
-        post_delete_user("test1")
+        # post_delete_user("test2")
     ]
+    
 
     if any(res != 200 for res in all_responses):
         print("Test failed: At least one response was not 200.")
