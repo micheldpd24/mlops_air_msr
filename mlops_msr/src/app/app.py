@@ -16,8 +16,31 @@ from functools import wraps
 from src.app.app_utils import predict_song
 from src.app.reco_monitoring import merge_reco_data, cosine_similarity_trend
 
+
+import re
+from flask import jsonify
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
+from flask import Flask
+from datetime import datetime, timedelta
+import pylibmc  # ***
+
+
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "secret"
+
+# Set up the Memcached client
+memcached_client = pylibmc.Client(["127.0.0.1"], binary=True)
+
+
+
+#céation d'une instance limiter
+limiter = Limiter(
+    get_remote_address, 
+    app=app,
+    default_limits=["200 per day", "50 per hour"],  # Limites globales par IP
+    storage_uri="memory: 127.0.0.1:5000" 
+)
 
 # Initialize TinyDB
 db_path = "users/users.json"
@@ -69,6 +92,18 @@ def admin_required(f):
             return render_template("homepage.html")
     return decorated_function
 
+# --- Security: Password Validation ---
+# Ensures the password meets security requirements (length, upper case, digits, special chars)
+def is_valid_password(password):
+    if len(password) < 8:
+        return False
+    if not re.search(r"[A-Z]", password):
+        return False
+    if not re.search(r"\d", password):
+        return False
+    if not re.search(r"[!@#$%^&*()]", password):
+        return False
+    return True
 
 @app.route('/register', methods=["GET", "POST"])
 def register():
@@ -76,6 +111,12 @@ def register():
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
+
+        # Password validation check
+        if not is_valid_password(password):
+            flash("Password must be at least 8 characters long, include an uppercase letter, a digit, and a special character.")
+            return redirect(url_for("register"))
+        
         hashed_password = generate_password_hash(password)
 
         # Check if user already exists
@@ -92,20 +133,54 @@ def register():
     return render_template("sign_up.html")
 
 
+# Configuration for failed login attempts
+FAILED_LOGIN_LIMIT = 5  # The maximum number of allowed failed login attempts before the account is blocked
+BLOCK_DURATION = timedelta(minutes=15)  # The duration for which the account will be locked after reaching the limit
+
+# Variable to track the login attempts
+failed_attempts = {}  # Dictionary to store the number of failed attempts and the time of the last attempt for each username
+
 @app.route("/", methods=["GET", "POST"])
 def login():
+    global failed_attempts
+
     if request.method == "POST":
         username = request.form.get("username")
         password = request.form.get("password")
 
+        now = datetime.now()
+        user_attempts = failed_attempts.get(username, {"count": 0, "last_attempt": None, "blocked_until": None})
+
+        # Check if the account is temporarily blocked
+        if user_attempts["blocked_until"] and now < user_attempts["blocked_until"]:
+            remaining_time = (user_attempts["blocked_until"] - now).seconds // 60
+            flash(f"Too many failed login attempts. Your account is locked. Try again in {remaining_time} minutes.", category="login_error")
+            return render_template("homepage.html")
+
+        # Authenticate user credentials
         user_entry = user_table.get(Query().username == username)
         if user_entry and check_password_hash(user_entry['password'], password):
+            # Reset failed attempts after a successful login
+            failed_attempts.pop(username, None)
             user = Users(user_entry.doc_id, user_entry['username'], user_entry['password'], user_entry.get('role', 'user'))
-            remember = True if request.form.get("remember") else False
-            login_user(user, remember=remember)
+            login_user(user)
             return redirect(url_for("welcome"))
         else:
-            flash("Login failed. Check your username and password.")
+            # Increment failed login attempts on authentication failure
+            user_attempts["count"] += 1
+            user_attempts["last_attempt"] = now
+
+            # Block the account if the limit is reached
+            if user_attempts["count"] >= FAILED_LOGIN_LIMIT:
+                user_attempts["blocked_until"] = now + BLOCK_DURATION
+                flash("Too many failed login attempts. Your account is temporarily locked.", category="login_error")
+            else:
+                # Notify user of remaining attempts
+                attempts_left = FAILED_LOGIN_LIMIT - user_attempts["count"]
+                flash(f"Login failed. You have {attempts_left} attempts left.", category="login_error")
+
+            # Update the global failed_attempts dictionary
+            failed_attempts[username] = user_attempts
 
     return render_template("homepage.html")
 
@@ -131,7 +206,8 @@ def about():
 
 
 @app.route('/recommend', methods=['POST'])
-@login_required
+@login_required # Ensures user is logged in
+@limiter.limit("5 per minute", error_message="Too many recommendations requested. Please wait a moment and try again.")  # Custom error message
 def recommend():
     # requesting the playist reference (URL of Index) form the HTML form
     playlist_ref = request.form['URL']
@@ -201,9 +277,41 @@ def show_cosine_similarity():
     return render_template("monitoring.html", graph_html=graph_html)
 
 
+@app.route('/delete_user', methods=["GET", "POST"])
+@login_required
+@admin_required
+def delete_user():
+    # If it's a POST request (form submission)
+    if request.method == "POST":
+        # Get the username from the form input
+        username_to_delete = request.form.get("username")
+
+        # Search for the user in the TinyDB
+        user_entry = user_table.get(Query().username == username_to_delete)
+
+        if user_entry:
+            # Delete the user from the database
+            user_table.remove(Query().username == username_to_delete)
+            flash(f"User '{username_to_delete}' has been successfully deleted.", "success")
+        else:
+            flash(f"User '{username_to_delete}' not found.", "danger")
+
+        # Redirect after handling POST request
+        return redirect(url_for('welcome'))  # Redirect to a page (e.g., welcome)
+
+    # If it's a GET request, render the delete user form
+    return render_template('delete_user_form.html')
+
+
 if __name__ == '__main__':
 
-    # Ensure session cookies are secure
-    app.config['SESSION_COOKIE_HTTPONLY'] = True
+    # Session cookie configuration
+    # app.config['SESSION_COOKIE_SECURE'] = True  # Ensures cookies are sent only over HTTPS
+    app.config['SESSION_COOKIE_HTTPONLY'] = True  # Prevents JavaScript access to cookies
+    app.config['SESSION_COOKIE_SAMESITE'] = 'Lax'  # Restricts cross-site usage of cookies
+
+    # Session expiration configuration
+    app.config['PERMANENT_SESSION_LIFETIME'] = 30 * 60  # Sets session lifetime to 30 minutes
+
 
     app.run(host="0.0.0.0", debug=True)

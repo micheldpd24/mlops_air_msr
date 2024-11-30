@@ -1,24 +1,22 @@
 # Project Overview
-Design and Implementation of an MLOps CI/CD Pipeline for a Music Recommendation System
-Developed a continuous integration and continuous deployment (CI/CD) pipeline for a music recommendation system leveraging Spotify music playlists. The pipeline's design is based on the methodology from the Datascientest MLOps wine quality competition project [add link].
+### Design and Implementation of an MLOps CI/CD Pipeline for a Music Recommendation System
 
-Pipeline Orchestration with Apache Airflow
-Configured and managed the orchestration of the pipeline using Apache Airflow, enabling automated, scalable, and efficient workflows.
+This project demonstrates the design and implementation of a Continuous Integration and Continuous Deployment (CI/CD) pipeline for a **Music Recommendation System** leveraging Spotify playlists.
 
-Experiment Monitoring with MLflow and Dagshub
-Integrated MLflow for tracking machine learning experiments, model parameters, and performance metrics. With MLflow server setup in DagsHub.
+Key components of the pipeline include:
 
-Containerization with Docker
-Dockerized both the recommendation application and the pipeline orchestration, ensuring portability, scalability, and consistency across environments.
+- **CI/CD Pipeline Development**: Designed an automated pipeline for building, testing, and deploying the music recommendation system.
+- **Pipeline Orchestration with Apache Airflow**: Configured and managed the orchestration of the pipeline using **Apache Airflow**, enabling automated, scalable, and efficient workflows.
+- **Experiment Monitoring with MLflow & DagsHub**: Integrated **MLflow** for tracking machine learning experiments, model parameters, and performance metrics, with the MLflow server hosted on **DagsHub**.
+- **Containerization with Docker**: Dockerized both the recommendation application and the pipeline orchestration to ensure portability, scalability, and consistency across environments.
 
-# Setting up an MLOps project step by step 🚀
-
-Welcome to the setup guide! Here, we'll outline the steps needed to configure and implement the various first stages of the MLOps pipeline. Follow along and fill in the details as you proceed through each step in the `workflow_steps.ipynb` notebook.
-
-You can start by getting familiar with the architecture of the project: 
+## Project Architecture
 
 ```bash
 .
+├── .github/
+│   ├── workflows/
+│       ├── docker-tests.yml
 ├── config/
 ├── dags/
 │   ├── custom_logger.py
@@ -158,29 +156,100 @@ You can start by getting familiar with the architecture of the project:
 ├── air_requirements.txt
 ├── docker-compose.yaml
 └── requirements.txt
-``
+```
+
+## Setup
+
+### 1. Clone the Repository
+Start by cloning this repository to your local machine:
+
+```bash
+git clone https://github.com/micheldpd24/mlops_air_msr.git
+cd mlops_air_msr
+```
+
+### 2. Python Virtual Environment Setup
+- Create and activate a Python virtual environment:
+```bash
+python3 -m venv .venv
+source .venv/bin/activate  # Linux/MacOS
+.venv\Scripts\activate  # Windows
+```
+- install the required dependencies:
+```bash
+pip install -r requirements.txt
+```
+1st clone the repos
+
+### 3. Docker Setup
+Make sure you have Docker installed on your system. Follow the installation instructions on the official Docker website: [Install Docker](https://docs.docker.com/engine/install/).
+
+### 4. Configuration for Spotify, DagsHub, and MLflow
+
+You need to set up your credentials for the Spotify API and DagsHub. Here's how to configure them:
+
+- Spotify API:
+
+  - Go to Spotify for Developers and get your Spotify Client ID an Spotify Client Secret.
+- DagsHub & MLflow:
+  - Create a DagsHub repository for experiment tracking with MLflow.
+  - Get your MLflow URI and MLflow Tracking Username from DagsHub.
+- Open the configuration file: mlops_msr/mlflow_and_sp.env and add the following information:
+
+```
+MLFLOW_TRACKING_URI=https://dagshub.com/<your-username>/<your-repo-name>.mlflow
+MLFLOW_TRACKING_USERNAME=<your-dagsHub-username>
+MLFLOW_TRACKING_PASSWORD=<your-mlflow-tracking-password>
+CLIENT_ID=<your-spotify-api-client-id>
+CLIENT_SECRET=<your-spotify-api-client-secret>
+```
+**Note**: Make sure to save the changes to this file.
+
+5. Data Setup
+- Unzip playlist.json.zip into the directory: mlops_msr/data/raw/ and remove the zip file afterward.
+- Ensure that you have the dataset file dataset.zip in mlops_air_msr/mlops_msr/data/raw/ (this is the original dataset of Spotify songs used to initialize the pipeline).
+
+## Starting the Pipeline
+Once everything is set up, you can start the pipeline using Docker Compose:
+```bash
+docker-compose up --build
+```
+After the containers are up and running:
+
+- **Music Recommender Application**: Access the Flask API interface at http://localhost:5000.
+- **Apache Airflow UI**: Access the Airflow UI at http://localhost:8080.
+
+###
+## Pipeline architecture
+
+![Airflow dags graph](airflow_dag.png)
+
+The architecture of the system involves 3 main blocs
+
+  1) Spotify data feed
+  2) Data processing
+  3) Models training and Evaluation:
+
+
+## Setting up the MLOps project step by step 🚀
+
+The project was implemented in two phases:
+  
+  **phase 1** : Mlops pipeline without Spotify data feed
+
+  **phase 2** : Complete pipeline with Spotify data feed
+
+# Phase 1
+This part is inspired from [Datascientest MLOps wine quality implementation](https://github.com/DataScientest/overview_mlops_wine_quality_student)
+
+Welcome to the setup guide! Here, we'll outline the steps needed to configure and implement the various first stages of the MLOps pipeline. Follow along and fill in the details as you proceed through each step in the `workflow_steps.ipynb` notebook.
+
+You can start by getting familiar with the architecture of the project: 
 
 Through this project we'll work with a songs dataset. The goal is implement a recommendation system that will recommend a number of songs given a spotify music playlist. All while adhering to the best practices in MLOps in terms of version control, use of pipelines and the most commonly used tools.
 
 - The recommender application is a Flask API
 - Models training and Evaluation are monitored with MLflow with the MLflow Server in DagsHub
-- The Whole Pipeline Orchestration from Data feeding from Spotify to models training nd Evaluation is done using Apache Airflow
-
-## Virtual Environement
-
-First of all you need to start by forking and cloning the project. Then, you must create a virtual environment where you'll install all the necessary libraries. These can be found in the `requirements.txt` file 📚 Make sure you activate your virtual environment before you use it 😉
-
-## Launch Airflow Docker and Music Recommander Flask API
-From the roots of the project folder execute the command:  docker compose up --build
-
--- The recommmender API "rec-app-air" is accessible from http:://localhost:50000
--- Airflow UI is accessible from https://localhost:8080
-
-Now let's go through the files that are readily available.
-
-## Pipeline Description
-[TBD]
-
 
 ## Configuration Files 📘
 Let's have a quick look at the three `yaml` files in our `src` folder.
@@ -267,7 +336,7 @@ This class will
 This class will
 * Fit a clustering model for each music genre 
 * Evaluate each fitted model and log metrics using MLFlow 
-
+###
 ## Step 4: Pipeline Steps 🚀
 Using the *Step 4* of the notebook, in `src/pipeline_steps` create scripts for each stage of the pipeline to instantiate and run the processes:
 
@@ -309,5 +378,148 @@ Congratulations! 🎉 Now that you have a structured and well-defined MLOps proj
 
 Each step is modularized, making it easy to maintain, extend, and scale your Machine Learning pipeline. 
 
+###
+# Phase 2. Pipeline with Spotify data feed and Orchestration with Apache Airflow
+
+The airflow dag is defined in "dag_data_feeding.py" script
+
+## General Objective
+This Python script defines a **DAG in Airflow** called `data_feeding_dag`, which orchestrates a pipeline to extract, transform, and update Spotify data. The pipeline integrates Spotify API data into a machine learning workflow. Key steps include:
+1. Verifying and collecting Spotify data.
+2. Updating the song database.
+3. Processing the data.
+4. Training and evaluating machine learning models (classification and clustering).
 
 
+## Key Highlights of the Script
+
+### Libraries and Configurations
+1. **Main Imports**:
+   - Airflow for task management (*DAG*, *Operators*, *TaskGroups*).
+   - Spotipy for interacting with Spotify's API.
+   - `pandas` for data manipulation.
+   - Custom modules (`dag_utils`) for reusable utility functions.
+
+2. **Global Variables**:
+   - `CLIENT_ID` and `CLIENT_SECRET`: API credentials for Spotify.
+   - Data directories (`URIS_DIR`, `INTERIM_DIR`) for organizing processed files.
+
+3. **API Rate Limiting**:
+   - Implements a delay between requests to comply with Spotify's rate limits.
+
+---
+
+### Key Functions
+#### Spotify Data Management
+1. **`check_songs_base_init`**:
+   - Checks if a local song database exists. If not, it triggers a data processing phase starting with the initial dataset ingestion.
+
+2. **`get_songs_from_spotify`**:
+   - Retrieves song features from Spotify's API.
+
+3. **`update_songs_base`**:
+   - Merges newly fetched data with the existing database, removes duplicates, and archives older versions if significant changes are detected.
+
+#### Pipeline Stages
+1. **`data_ingestion`**: Loads initial data.
+2. **`data_validation`**: Validates data against the expected schema.
+3. **`data_transformation`**: Prepares data for machine learning models.
+4. **Model Training and Evaluation**:
+   - `classification_model_training` and `classification_model_evaluation` handle classification models.
+   - `clustering_models_fit_and_evaluation` handles clustering models.
+
+
+### DAG Definition
+1. **General Parameters**:
+   - Scheduled to run every hour (CRON: `20 * * * *`).
+   - Limits execution to one active instance at a time.
+
+2. **Task Structure**:
+   - **Initial Branching**: `check_songs_base_init` decides whether to collect data from spotify or initialize the songs base if it is not.
+   - **Task Groups**:
+     - `spotify_data_feed`: Handles song collection and database updates.
+     - `data_processing`: Handles ingestion, validation, and transformation of data.
+     - `classification_model`: Handles classification model training and evaluation.
+   - **Final Task**: `end` signals the end of the DAG.
+
+3. **Dependencies**:
+   - The DAG organizes tasks into branches and sequences (e.g., `spotify_data_feed` must finish before data processing can proceed).
+
+
+
+## Summary
+This Airflow DAG automates a pipeline to:
+1. Sync Spotify data.
+2. Update a local song database.
+3. Prepare the data for machine learning models.
+4. Train and evaluate these models.
+
+It provides a flexible integration with Spotify's API while maintaining a structured and modular workflow for managing data and models.
+
+# The recommendation application
+The primary objective of this project is to create an application that recommends at least 10 songs based on a submitted Spotify playlist.
+
+Our application is developed using the Flask framework, ensuring scalability and ease of integration.
+
+The main codebase for the Flask application is located in mlops_msr/src/app/app.py.
+
+## Synthetic Description of app.py
+
+### Overview
+This script implements a Flask web application with user authentication, admin functionalities, and a music recommendation system. The app incorporates robust security measures, user session management, and role-based access control.
+
+---
+
+### Key Functionalities
+
+#### 1. **User Authentication and Management**
+- **Registration:** Users can register with a secure password validation system.
+- **Login/Logout:** Users can log in with rate-limited attempts to prevent brute force attacks.
+- **Role Management:** Admin and regular users have distinct access rights.
+- **User Storage:** User data is stored in a `TinyDB` database (`users.json`).
+
+#### 2. **Admin-Specific Features**
+- **Parameter Update:** Admins can update model parameters (e.g., `GradientBoostingClassifier` and `GaussianMixture`) stored in a YAML file.
+- **Model Retraining:** Admins can trigger model retraining through a button.
+- **Monitoring:** Admins can view a cosine similarity trend via a Plotly-generated graph.
+- **User Deletion:** Admins can remove users from the database.
+
+#### 3. **Music Recommendation**
+- Utilizes the `predict_song` function to recommend songs based on a reference playlist and a machine learning pipeline.
+- Rate-limited to ensure fair usage (`5 recommendations/minute`).
+
+#### 4. **Security Measures**
+- **Password Validation:** Ensures secure passwords with length, uppercase, digit, and special character requirements.
+- **Rate Limiting:** Limits global app requests and specific actions (e.g., login, recommendations) to mitigate abuse.
+- **Session Configuration:** Implements secure cookie settings and a session timeout.
+
+#### 5. **Routes**
+- **`/register` & `/login:`** Handle user registration and login with validation.
+- **`/logout:`** Logs out the current user.
+- **`/welcome:`** Displays a logged-in user's welcome page.
+- **`/recommend:`** Processes song recommendations for logged-in users.
+- **`/update_params:`** Allows admins to update ML parameters.
+- **`/train:`** Triggers model retraining.
+- **`/monitoring:`** Displays a trend graph for monitoring recommendation system performance.
+- **`/delete_user:`** Provides admin functionality to delete a user.
+
+---
+
+### Technology Stack
+- **Frameworks & Libraries:** Flask, Flask-Login, TinyDB, Flask-Limiter, YAML, Plotly.
+- **Security:** Implements secure password hashing (`werkzeug`), role-based access, and session protection.
+
+### Usage
+The app is designed to provide a secure and feature-rich platform for music recommendations with customizable ML parameters, robust user authentication, and monitoring capabilities.
+
+# Data sources
+[Spotify tracks dataset](https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-dataset)
+
+# References
+[Datascientest mlops courses](https://datascientest.com/mlops-le-devops-applique-aux-projets-de-machine-learning)
+
+[Kidney Disease Classification using MLflow & DVC](https://github.com/ai-mayurpatil/DL-Kidney_Disease_Classification)
+
+[Finding the Next Best Songs with Machine Learning](https://bricken.co/spotifyrecommendation/)
+
+[Enhance your Playlists with Machine Learning: Spotify Automatic Playlist Continuation](https://github.com/enjuichang/PracticalDataScience-ENCA)

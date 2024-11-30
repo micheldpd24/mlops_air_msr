@@ -2,13 +2,15 @@ scikit-learn
 pandas
 Flask
 Flask-Login
+Flask-Limiter
 ensure
 dagshub
-dvc
 mlflow
 spotipy
 python-dotenv
 python-box
-dvc-s3
 tinydb
 plotly
+tqdm
+Flask-Limiter
+pylibmc
