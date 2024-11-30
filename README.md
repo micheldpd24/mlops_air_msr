@@ -14,6 +14,9 @@ Key components of the pipeline include:
 
 ```bash
 .
+├── .github/
+│   ├── workflows/
+│       ├── docker-tests.yml
 ├── config/
 ├── dags/
 │   ├── custom_logger.py
