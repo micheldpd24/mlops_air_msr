@@ -1,6 +1,6 @@
 import logging
 import requests
-from tinydb import TinyDB, Query
+# from tinydb import TinyDB, Query
 import random
 
 
@@ -17,19 +17,19 @@ BASE_URL = "http://app:5000"  # Change to your Flask app's URL
 
 session = requests.Session()
 
-def clean_users_base():
-    # Initialize TinyDB
-    db_path = "users/users.json"
-    db = TinyDB(db_path)
-    user_table = db.table("users")
+# def clean_users_base():
+#     # Initialize TinyDB
+#     db_path = "users/users.json"
+#     db = TinyDB(db_path)
+#     user_table = db.table("users")
 
-    # Create a query object
-    User = Query()
+#     # Create a query object
+#     User = Query()
 
-    # Remove users where the 'username' is neither 'admin' nor 'test'
-    user_table.remove(~(User.username == 'admin') & ~(User.username == 'test'))
+#     # Remove users where the 'username' is neither 'admin' nor 'test'
+#     user_table.remove(~(User.username == 'admin') & ~(User.username == 'test'))
 
-    print("Users removed successfully.")
+#     print("Users removed successfully.")
 
 
 # Function to log the response
@@ -121,7 +121,7 @@ def post_delete_user(username):
 def run_tests():
     URL = str(random.randint(1, 499))
     # reset users database
-    clean_users_base()
+    # clean_users_base()
 
     # Check if any response is not 200 and return 0 if found
     all_responses = [
