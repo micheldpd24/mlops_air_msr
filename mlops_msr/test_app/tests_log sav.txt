@@ -1,0 +1,10 @@
+2024-11-30 16:35:31,217 - INFO - Post request to /register: 200
+2024-11-30 16:35:31,345 - INFO - Post login request to /: 200
+2024-11-30 16:35:31,351 - INFO - Get request to /welcome: 200
+2024-11-30 16:35:34,745 - INFO - Post request to /recommend: 200
+2024-11-30 16:35:34,781 - INFO - Get request to /logout: 200
+2024-11-30 16:35:35,093 - INFO - Post login request to /: 200
+2024-11-30 16:35:36,217 - INFO - Get request to /monitoring: 200
+2024-11-30 16:35:36,231 - INFO - Get request to /update_params: 200
+2024-11-30 16:35:36,241 - INFO - Get request to /delete_user: 200
+2024-11-30 16:35:36,254 - INFO - Post request to /delete_user: 200
