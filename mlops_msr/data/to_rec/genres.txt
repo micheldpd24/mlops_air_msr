@@ -1,0 +1,10 @@
+alternative
+classical
+country
+edm
+hip-hop
+jazz
+latin
+pop
+r-n-b
+rock
