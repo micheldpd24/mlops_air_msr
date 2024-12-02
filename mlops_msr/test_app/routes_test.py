@@ -13,7 +13,7 @@ logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s'  # Log format
 )
 
-BASE_URL = "http://localhost:5000"  # Change to your Flask app's URL
+BASE_URL = "http://app-rec:5000"  # Change to your Flask app's URL
 
 session = requests.Session()
 

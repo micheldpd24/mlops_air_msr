@@ -32,7 +32,7 @@ jobs:
       run: |
         echo "Waiting for app to be ready..."
         for i in {1..12}; do  # Attendre que l'application soit prête (max 2 minutes)
-          if curl -s http://localhost:5000/; then
+          if curl -s http://app-rec:5000/; then
             echo "App is ready!"
             exit 0
           fi
