@@ -1,4 +1,3 @@
-tinydb
 scikit-learn
 pandas
 Flask
