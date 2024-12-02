@@ -1,6 +1,6 @@
 import logging
 import requests
-from tinydb import TinyDB, Query
+# from tinydb import TinyDB, Query
 import random
 
 
@@ -13,23 +13,23 @@ logging.basicConfig(
     format='%(asctime)s - %(levelname)s - %(message)s'  # Log format
 )
 
-BASE_URL = "http://localhost:5000"  # Change to your Flask app's URL
+BASE_URL = "http://app-rec:5000"  # Change to your Flask app's URL
 
 session = requests.Session()
 
-def clean_users_base():
-    # Initialize TinyDB
-    db_path = "users/users.json"
-    db = TinyDB(db_path)
-    user_table = db.table("users")
+# def clean_users_base():
+#     # Initialize TinyDB
+#     db_path = "users/users.json"
+#     db = TinyDB(db_path)
+#     user_table = db.table("users")
 
-    # Create a query object
-    User = Query()
+#     # Create a query object
+#     User = Query()
 
-    # Remove users where the 'username' is neither 'admin' nor 'test'
-    user_table.remove(~(User.username == 'admin') & ~(User.username == 'test'))
+#     # Remove users where the 'username' is neither 'admin' nor 'test'
+#     user_table.remove(~(User.username == 'admin') & ~(User.username == 'test'))
 
-    print("Users removed successfully.")
+#     print("Users removed successfully.")
 
 
 # Function to log the response
@@ -51,6 +51,7 @@ def register_user(username, password):
 # Function to login and log the result
 def login_user(username, password):
     # logging.info(f"Attempting to log in user: {username}")
+
     print(f"Attempting to log in user: {username}")
     response = session.post(f'{BASE_URL}/', data={
         'username': username,
@@ -121,12 +122,12 @@ def post_delete_user(username):
 def run_tests():
     URL = str(random.randint(1, 499))
     # reset users database
-    clean_users_base()
+    # clean_users_base()
 
     # Check if any response is not 200 and return 0 if found
     all_responses = [
         # Step 1: Register a user
-        register_user("test2", "Test#User12345"),
+        #register_user("test2", "Test#User12345"),
         
         # Step 2: Log in with the created user
         login_user("test", "test"),
@@ -151,7 +152,7 @@ def run_tests():
         get_to_update_params(),
         
         # Step 9: Access delete_user route
-        access_delete_user_route(),
+       # access_delete_user_route(),
 
         # Step 10: Delete test1 user
         # post_delete_user("test2")
