@@ -510,7 +510,7 @@ This script implements a Flask web application with user authentication, admin f
 - **Security:** Implements secure password hashing (`werkzeug`), role-based access, and session protection.
 
 ### Usage
-The app is designed to provide a secure and feature-rich platform for music recommendations with customizable ML parameters, robust user authentication, and monitoring capabilities.
+The application is designed to provide a secure and feature-rich platform for music recommendations with customizable ML parameters, robust user authentication, and monitoring capabilities.
 
 # Data sources
 [Spotify tracks dataset](https://www.kaggle.com/datasets/maharshipandya/-spotify-tracks-dataset)
